@@ -1,0 +1,29 @@
+# Internal documents — never push to public repo
+*.docx
+*.pdf
+generate_*.py
+
+# Personal images (not used in published site)
+david lee.jpg
+jason park.jpg
+david*.jpg
+jason*.jpg
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# OneDrive temp/lock files
+~$*
+*.tmp
+
+# Editor caches
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
