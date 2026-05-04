@@ -1377,8 +1377,21 @@
         </div>
 
         <div class="field">
-          <label>연락처 (이메일 또는 전화) <span class="req">*</span></label>
-          <input type="text" name="연락처" required placeholder="email@example.com 또는 010-0000-0000" />
+          <label>이메일 <span class="req">*</span></label>
+          <input type="email" name="이메일" required placeholder="email@example.com" />
+        </div>
+
+        <div class="field">
+          <label>연락처 (휴대전화) <span class="req">*</span></label>
+          <input type="tel" name="연락처" required placeholder="010-0000-0000" />
+        </div>
+
+        <div class="field">
+          <label>성별</label>
+          <div class="radio-row">
+            <label class="radio-pill"><input type="radio" name="성별" value="남성" /><span>남성</span></label>
+            <label class="radio-pill"><input type="radio" name="성별" value="여성" /><span>여성</span></label>
+          </div>
         </div>
 
         <div class="field">
@@ -1504,7 +1517,7 @@
         <div class="form-section-title">④ 진단 — 해당하는 항목 모두 선택</div>
         <div class="check-grid">
           <label class="check-pill"><input type="checkbox" name="진단_더듬음" value="면접 때 더듬는다" /><span>면접 때 더듬는다</span></label>
-          <label class="check-pill"><input type="checkbox" name="진단_떨림" value="면접에서 떤다" /><span>면접에서 떤다</span></label>
+          <label class="check-pill"><input type="checkbox" name="진단_압박면접" value="압박/임원 면접이 두렵다" /><span>압박/임원 면접이 두렵다</span></label>
           <label class="check-pill"><input type="checkbox" name="진단_외모" value="외모적 자신감 부족" /><span>외모적 자신감 부족</span></label>
           <label class="check-pill"><input type="checkbox" name="진단_50회" value="입사지원 50개 이상" /><span>입사지원 50개 이상 해봤다</span></label>
           <label class="check-pill"><input type="checkbox" name="진단_자소서" value="자소서가 막막함" /><span>자기소개서가 막막하다</span></label>
