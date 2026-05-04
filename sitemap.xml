@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- TODO: YOUR-DOMAIN.com 을 실제 배포 도메인으로 교체 -->
-  <!-- 예: https://hired.kr/  또는 https://[ID].github.io/hired/  또는 https://hired-xxx.vercel.app/ -->
   <url>
-    <loc>https://YOUR-DOMAIN.com/</loc>
+    <loc>https://hired-rose.vercel.app/</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>

@@ -4,5 +4,5 @@
 User-agent: *
 Allow: /
 
-# 사이트맵 위치 — TODO: YOUR-DOMAIN.com 을 실제 배포 도메인으로 교체
-Sitemap: https://YOUR-DOMAIN.com/sitemap.xml
+# 사이트맵
+Sitemap: https://hired-rose.vercel.app/sitemap.xml
