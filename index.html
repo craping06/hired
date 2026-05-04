@@ -8,6 +8,25 @@
 <meta property="og:title" content="HIRED. — 인사팀장 출신 컨설턴트가 직접 진행하는 프리미엄 1:1 취업 컨설팅" />
 <meta property="og:description" content="채용을 가장 잘 아는 사람의 1:1 컨설팅. 미합격 시 절반 환불." />
 <meta property="og:type" content="website" />
+<!-- TODO: 배포 후 실제 URL로 교체 (예: https://hired.kr 또는 https://[ID].github.io/hired/) -->
+<link rel="canonical" href="https://YOUR-DOMAIN.com/" />
+<meta property="og:url" content="https://YOUR-DOMAIN.com/" />
+<meta property="og:image" content="https://YOUR-DOMAIN.com/og-image.png" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="HIRED." />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- ===== Google Analytics 4 (Property: G-HLQEMXXYZN) ===== -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HLQEMXXYZN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HLQEMXXYZN', {
+    send_page_view: true,
+    cookie_flags: 'SameSite=None;Secure'
+  });
+</script>
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
@@ -1652,7 +1671,7 @@
     });
   }
 
-  // 폼 제출 전 간단 검증 (선택값 있을 때만)
+  // 폼 제출 전 간단 검증 + GA4 이벤트 추적
   document.querySelector('.form-card').addEventListener('submit', (e) => {
     const form = e.target;
     const gubun = form.querySelector('input[name="구분"]:checked');
@@ -1660,8 +1679,37 @@
     if (!form.querySelector('input[name="동의"]:checked')) {
       e.preventDefault(); alert('개인정보 수집·이용에 동의해 주세요.'); return;
     }
+    // GA4 전환 이벤트 (sendBeacon 으로 페이지 이탈 후에도 전송 보장)
+    if (typeof gtag === 'function') {
+      gtag('event', 'form_submit', {
+        event_category: 'engagement',
+        event_label: '진단콜신청',
+        gubun: gubun.value,
+        transport_type: 'beacon'
+      });
+      gtag('event', 'generate_lead', {
+        currency: 'KRW',
+        value: gubun.value === '신입' ? 50 : 100,
+        transport_type: 'beacon'
+      });
+    }
     // 정상 제출 → FormSubmit.co로 이동, 첫 사용 시 craping@naver.com에 인증 메일 발송됨
   });
+
+  // CTA 버튼 클릭 추적
+  document.querySelectorAll('a[href="#cta"]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      if (typeof gtag === 'function') {
+        const label = (e.currentTarget.textContent || '').trim().slice(0, 40) || 'cta';
+        gtag('event', 'cta_click', {
+          event_category: 'engagement',
+          event_label: label
+        });
+      }
+    });
+  });
+
+  // 트랙 카드 "이 트랙으로 진단 받기" 클릭은 위 CTA 추적과 함께 잡힘 (모두 #cta로 향함)
 </script>
 
 </body>
